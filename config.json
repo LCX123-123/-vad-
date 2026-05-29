@@ -1,0 +1,46 @@
+{
+  "data": {
+    "data_dir": "data",
+    "language": "en",
+    "test_size": 0.2,
+    "val_size": 0.1,
+    "batch_size": 16,
+    "max_length": 512,
+    "random_state": 42
+  },
+  "model": {
+    "model_name": "bert-base-uncased",
+    "model_type": "simple",
+    "num_classes": 2,
+    "dropout_rate": 0.3,
+    "freeze_bert": false
+  },
+  "emotion_dimension": {
+    "enabled": false,
+    "model_type": "dimension",
+    "emotion_dimensions": ["valence", "arousal", "dominance"],
+    "dimension_ranges": {
+      "valence": [-1.0, 1.0],
+      "arousal": [-1.0, 1.0],
+      "dominance": [-1.0, 1.0]
+    },
+    "hidden_dims": [768, 256, 64],
+    "use_attention_pooling": true,
+    "normalize_labels": true
+  },
+  "training": {
+    "num_epochs": 3,
+    "learning_rate": 2e-5,
+    "weight_decay": 0.01,
+    "warmup_steps": 500,
+    "max_grad_norm": 1.0,
+    "early_stopping_patience": 5,
+    "save_best": true
+  },
+  "system": {
+    "device": "auto",
+    "num_workers": 4,
+    "save_dir": "checkpoints",
+    "log_dir": "logs"
+  }
+}
